@@ -22,10 +22,7 @@ while True:
             print("Button 1 pressed, is now true")
     else:
         if button1pressed:
-            print("Sending obs action")
-            requests.get(url="http://192.168.2.27:3000/macro",
-                         params={'action': 'obs'})
-            print("OBS request sent")
+            sendRequest("obs")
             button1pressed = False
             print("Button 1 released, is now False")
 
@@ -35,10 +32,7 @@ while True:
             print("Button 2 pressed, is now True")
     else:
         if button2pressed:
-            print("Sending discord action")
-            requests.get(url="http://192.168.2.27:3000/macro",
-                         params={'action': 'discord'})
-            print("Discord request sent")
+            sendRequest("discord")
             button2pressed = False
             print("Button 2 released, is now False")
 
@@ -48,23 +42,17 @@ while True:
             print("Button 3 pressed, is now True")
     else:
         if button3pressed:
-            print("Sending discord action")
-            requests.get(url="http://192.168.2.27:3000/macro",
-                         params={'action': 'toggleplay'})
-            print("Discord request sent")
+            sendRequest("toggleplay")
             button3pressed = False
             print("Button 3 released, is now False")
-    
+
     if button4.is_pressed:
         if button4pressed != True:
             button4pressed = True
             print("Button 4 pressed, is now True")
     else:
         if button4pressed:
-            print("Sending discord action")
-            requests.get(url="http://192.168.2.27:3000/macro",
-                         params={'action': 'previous'})
-            print("Discord request sent")
+            sendRequest("previous")
             button4pressed = False
             print("Button 4 released, is now False")
 
@@ -74,9 +62,17 @@ while True:
             print("Button 5 pressed, is now True")
     else:
         if button5pressed:
-            print("Sending discord action")
-            requests.get(url="http://192.168.2.27:3000/macro",
-                         params={'action': 'next'})
-            print("Discord request sent")
+            sendRequest("next")
             button5pressed = False
             print("Button 5 released, is now False")
+
+
+def sendRequest(action):
+    print("Sending " + action + " request")
+
+    try:
+        requests.get(url="http://192.168.2.27:3000/macro",
+                     params={'action': action})
+        print(action + " request sent")
+    except requests.exceptions.RequestException as e:
+        print("Sending request failed: " + e)
