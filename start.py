@@ -14,6 +14,16 @@ button3 = Button(12)
 button4 = Button(25)
 button5 = Button(16)
 
+def sendRequest(action):
+    print("Sending " + action + " request")
+
+    try:
+        requests.get(url="http://192.168.2.27:3000/macro",
+                     params={'action': action})
+        print(action + " request sent")
+    except requests.exceptions.RequestException as e:
+        print("Sending request failed: " + e)
+
 print("App started")
 
 while True:
@@ -66,13 +76,3 @@ while True:
             sendRequest("next")
             button5pressed = False
             print("Button 5 released, is now False")
-
-def sendRequest(action):
-    print("Sending " + action + " request")
-
-    try:
-        requests.get(url="http://192.168.2.27:3000/macro",
-                     params={'action': action})
-        print(action + " request sent")
-    except requests.exceptions.RequestException as e:
-        print("Sending request failed: " + e)
