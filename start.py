@@ -14,6 +14,7 @@ button3 = Button(12)
 button4 = Button(25)
 button5 = Button(16)
 
+print("App started")
 
 while True:
     if button1.is_pressed:
