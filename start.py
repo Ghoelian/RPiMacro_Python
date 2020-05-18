@@ -7,6 +7,7 @@ button3 = Button(12)
 button4 = Button(25)
 button5 = Button(16)
 
+
 def sendRequest(action):
     print("Sending " + action + " request")
 
@@ -17,11 +18,11 @@ def sendRequest(action):
     except requests.exceptions.RequestException as e:
         print("Sending request failed: " + e)
 
+
 print("App started")
 
-while True:
-    button1.when_released = sendRequest("obs")
-    button2.when_released = sendRequest("discord")
-    button3.when_released = sendRequest("toggleplay")
-    button4.when_released = sendRequest("previous")
-    button5.when_released = sendRequest("next")
+button1.when_released = sendRequest("obs")
+button2.when_released = sendRequest("discord")
+button3.when_released = sendRequest("toggleplay")
+button4.when_released = sendRequest("previous")
+button5.when_released = sendRequest("next")
