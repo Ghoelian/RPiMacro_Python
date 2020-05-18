@@ -20,8 +20,8 @@ def sendRequest(action):
 print("App started")
 
 while True:
-    button1.when_released(sendRequest("obs"))
-    button2.when_released(sendRequest("discord"))
-    button3.when_released(sendRequest("toggleplay"))
-    button4.when_released(sendRequest("previous"))
-    button5.when_released(sendRequest("next"))
+    button1.when_released = sendRequest("obs")
+    button2.when_released = sendRequest("discord")
+    button3.when_released = sendRequest("toggleplay")
+    button4.when_released = sendRequest("previous")
+    button5.when_released = sendRequest("next")
